@@ -32,18 +32,18 @@ func (m *MJPEG) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 
 	mimeWriter := multipart.NewWriter(w)
-	mimeWriter.SetBoundary("--boundary")
+	_ = mimeWriter.SetBoundary("--boundary")
 
 	w.Header().Add("Connection", "close")
 	w.Header().Add("Cache-Control", "no-store, no-cache")
 	w.Header().Add("Content-Type", fmt.Sprintf("multipart/x-mixed-replace;boundary=%s", mimeWriter.Boundary()))
 
-	cn := w.(http.CloseNotifier).CloseNotify()
+	done := r.Context().Done()
 
 loop:
 	for {
 		select {
-		case <-cn:
+		case <-done:
 			break loop
 
 		default:

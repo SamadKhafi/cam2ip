@@ -37,7 +37,7 @@ func (h *HTML) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	w.WriteHeader(http.StatusOK)
-	w.Write(h.Template)
+	_, _ = w.Write(h.Template)
 }
 
 var html = `<html>

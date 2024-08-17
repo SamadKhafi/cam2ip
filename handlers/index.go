@@ -5,8 +5,7 @@ import (
 )
 
 // Index handler.
-type Index struct {
-}
+type Index struct{}
 
 // NewIndex returns new Index handler.
 func NewIndex() *Index {
@@ -20,7 +19,7 @@ func (i *Index) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	w.Write([]byte(`<html>
+	_, _ = w.Write([]byte(`<html>
                         <head><title>cam2ip</title></head>
                         <body>
                         <h1>cam2ip</h1>

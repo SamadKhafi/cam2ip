@@ -33,7 +33,7 @@ ACaptureSessionOutput *captureSessionOutput;
 ACaptureSessionOutputContainer *captureSessionOutputContainer;
 
 void device_on_disconnected(void *context, ACameraDevice *device) {
-    LOGI("camera %s is diconnected.\n", ACameraDevice_getId(device));
+    LOGI("camera %s is disconnected.\n", ACameraDevice_getId(device));
 }
 
 void device_on_error(void *context, ACameraDevice *device, int error) {
